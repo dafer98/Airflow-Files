@@ -2,11 +2,11 @@ from datetime import datetime
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
-from decouple import config
+from airflow.models import Variable
 
 
 def print_hello():
-    API_USERNAME = config('user')
+    API_USERNAME = Variable.get('user')
     return('Hello world from first Airflow DAG!',API_USERNAME)
 
 dag = DAG('hello_world', description='Hello World DAG',
