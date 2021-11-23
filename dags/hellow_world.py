@@ -2,9 +2,12 @@ from datetime import datetime
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
+from decouple import config
+
 
 def print_hello():
-    return 'Hello world from first Airflow DAG!'
+    API_USERNAME = config('user')
+    return('Hello world from first Airflow DAG!',API_USERNAME)
 
 dag = DAG('hello_world', description='Hello World DAG',
           schedule_interval='0 12 * * *',
