@@ -35,6 +35,9 @@ data*
 logs/*
 *.log
 
+# Environment variables
+dags/*.env
+
 temp/*
 
 __MACOSX
